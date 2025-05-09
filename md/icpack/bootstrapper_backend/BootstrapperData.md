@@ -14,6 +14,13 @@ type PubKey = Blob
 
 
 
+### Function `changeOwner`
+``` motoko no-repl
+func changeOwner(newOwner : Principal)
+```
+
+
+
 ### Type `FrontendTweaker`
 ``` motoko no-repl
 type FrontendTweaker = { frontend : Principal; user : Principal }

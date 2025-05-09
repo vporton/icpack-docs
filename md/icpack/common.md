@@ -280,7 +280,7 @@ type CanisterFulfillment = { threshold : Nat; topupAmount : Nat }
 
 ## Function `principalToSubaccount`
 ``` motoko no-repl
-func principalToSubaccount(principal : Principal) : Blob
+func principalToSubaccount(principal : Principal) : [Nat8]
 ```
 
 
