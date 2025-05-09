@@ -103,18 +103,27 @@ type ModuleUpload = { code : ModuleUploadCode; installByDefault : Bool; forceRei
 type CheckInitializedCallback = { moduleName : Text; how : {#methodName : Text; #urlPath : Text} }
 ```
 
+If `how` is `#methodName`, then the module is considered initialized when
+the method is called and doesn't trap.
+If `how` is `#urlPath`, then the module is considered initialized when
+the URL path (starting with `/`) exists.
 
 ## Type `SharedRealPackageInfo`
 ``` motoko no-repl
-type SharedRealPackageInfo = { modules : [(Text, SharedModule)]; dependencies : [(PackageName, [VersionRange])]; suggests : [(PackageName, [VersionRange])]; recommends : [(PackageName, [VersionRange])]; functions : [(PackageName, [VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
+type SharedRealPackageInfo = { modules : [(Text, SharedModule)]; dependencies : [(PackageName, ?[VersionRange])]; suggests : [(PackageName, ?[VersionRange])]; recommends : [(PackageName, ?[VersionRange])]; functions : [(PackageName, ?[VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
 ```
 
+See `RealPackageInfo`.
 
 ## Type `RealPackageInfo`
 ``` motoko no-repl
-type RealPackageInfo = { modules : HashMap.HashMap<Text, Module>; dependencies : [(PackageName, [VersionRange])]; suggests : [(PackageName, [VersionRange])]; recommends : [(PackageName, [VersionRange])]; functions : [(PackageName, [VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
+type RealPackageInfo = { modules : HashMap.HashMap<Text, Module>; dependencies : [(PackageName, ?[VersionRange])]; suggests : [(PackageName, ?[VersionRange])]; recommends : [(PackageName, ?[VersionRange])]; functions : [(PackageName, ?[VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
 ```
 
+`dependencies`, `suggests`, `recommends` (akin Debian) are currently not supported.
+Package's `functions` (currently not supported) are unrelated to Motoko functions.
+`modules` are named canisters. (Names are needed for example to know which module should be
+replaced by which during an upgrade.)
 
 ## Function `shareRealPackageInfo`
 ``` motoko no-repl
@@ -130,15 +139,17 @@ func unshareRealPackageInfo(package : SharedRealPackageInfo) : RealPackageInfo
 
 ## Type `RealPackageInfoUpload`
 ``` motoko no-repl
-type RealPackageInfoUpload = { modules : [(Text, ModuleUpload)]; dependencies : [(PackageName, [VersionRange])]; suggests : [(PackageName, [VersionRange])]; recommends : [(PackageName, [VersionRange])]; functions : [(PackageName, [VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
+type RealPackageInfoUpload = { modules : [(Text, ModuleUpload)]; dependencies : [(PackageName, ?[VersionRange])]; suggests : [(PackageName, ?[VersionRange])]; recommends : [(PackageName, ?[VersionRange])]; functions : [(PackageName, ?[VersionRange])]; permissions : [(Text, [MethodName])]; checkInitializedCallback : ?CheckInitializedCallback; frontendModule : ?Text }
 ```
 
+See `RealPackageInfo`.
 
 ## Type `VirtualPackageInfo`
 ``` motoko no-repl
-type VirtualPackageInfo = { choice : [(PackageName, [VersionRange])]; default : PackageName }
+type VirtualPackageInfo = { choice : [(PackageName, ?[VersionRange])]; default : PackageName }
 ```
 
+Yet unsupported.
 
 ## Type `SharedPackageInfo`
 ``` motoko no-repl
