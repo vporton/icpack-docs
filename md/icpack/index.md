@@ -8,6 +8,7 @@
 * [common](common.md) 
 * [copy_assets](copy_assets.md) 
 * [install](install.md) 
+* [lib/Account](lib/Account.md) 
 * [package_manager_backend/battery](package_manager_backend/battery.md) Battery canister or battery module is a canister that holds cycles and delivers them to other canisters.
 * [package_manager_backend/main_indirect](package_manager_backend/main_indirect.md) Canister that takes on itself potentially non-returning calls.
 * [package_manager_backend/package_manager](package_manager_backend/package_manager.md) TODO@P3: Methods to query for all installed packages.

@@ -258,9 +258,9 @@ func removeStalled() : async ()
 
 
 
-### Function `userAccountBlob`
+### Function `userAccountText`
 ``` motoko no-repl
-func userAccountBlob() : async Blob
+func userAccountText() : async Text
 ```
 
 If on local net for testing, use null account to transfer it without `icrc1_transfer`

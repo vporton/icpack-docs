@@ -59,9 +59,9 @@ type PrivKey = Blob
 
 
 
-### Function `userAccountBlob`
+### Function `userAccountText`
 ``` motoko no-repl
-func userAccountBlob() : async Blob
+func userAccountText() : async Text
 ```
 
 

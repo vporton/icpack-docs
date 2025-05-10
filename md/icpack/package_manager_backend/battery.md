@@ -99,19 +99,12 @@ func withdrawCycles(amount : Nat, payee : Principal) : async ()
 
 
 
-### Function `withdrawCycles2`
-``` motoko no-repl
-func withdrawCycles2(amount : Nat, payee : Principal) : async ()
-```
-
-TODO@P3: Unused function.
-
-
 ### Function `withdrawCycles3`
 ``` motoko no-repl
 func withdrawCycles3(amount : Nat, payee : Principal) : async ()
 ```
 
+TODO@P3: Unused function.
 
 
 ### Function `withdrawCycles4`
