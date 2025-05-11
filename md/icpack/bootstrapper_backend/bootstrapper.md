@@ -66,8 +66,22 @@ func userAccountText() : async Text
 
 
 
+### Function `convertICPToCycles`
+``` motoko no-repl
+func convertICPToCycles() : async { balance : Nat }
+```
+
+
+
 ### Function `balance`
 ``` motoko no-repl
 func balance() : async Nat
+```
+
+
+
+### Function `userCycleBalance`
+``` motoko no-repl
+func userCycleBalance() : async Nat
 ```
 

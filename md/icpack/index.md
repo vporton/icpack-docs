@@ -1,7 +1,5 @@
 # Index
 
-* [MockCMC](MockCMC.md) Mock `CMC.notify_create_canister` implementation using `IC.create_canister` (for testing).
-* [MockCyclesLedger](MockCyclesLedger.md) Mock `CyclesLedger.create_canister` implementation using `IC.create_canister` (for testing).
 * [bootstrapper_backend/BootstrapperData](bootstrapper_backend/BootstrapperData.md) 
 * [bootstrapper_backend/bookmarks](bootstrapper_backend/bookmarks.md) 
 * [bootstrapper_backend/bootstrapper](bootstrapper_backend/bootstrapper.md) This module is legible to non-returning-function attack. Throw it away if it fails this way.
