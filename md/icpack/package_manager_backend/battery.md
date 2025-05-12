@@ -114,6 +114,13 @@ func withdrawCycles4(amount : Nat) : async ()
 
 
 
+### Function `convertCycles`
+``` motoko no-repl
+func convertCycles()
+```
+
+
+
 ### Function `balance`
 ``` motoko no-repl
 func balance() : async Nat

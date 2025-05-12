@@ -263,8 +263,6 @@ func removeStalled() : async ()
 func userAccountText() : async Text
 ```
 
-If on local net for testing, use null account to transfer it without `icrc1_transfer`
-because `icrc1_transfer` does not work on local net as it should.
 
 
 ### Function `userBalance`
