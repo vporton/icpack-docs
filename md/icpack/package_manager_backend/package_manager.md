@@ -260,7 +260,7 @@ func removeStalled() : async ()
 
 ### Function `userAccountText`
 ``` motoko no-repl
-func userAccountText() : async Text
+func userAccountText() : async Principal
 ```
 
 
