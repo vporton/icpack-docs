@@ -37,7 +37,7 @@ func hasBookmark(b : Bookmark) : async Bool
 
 ### Function `addBookmark`
 ``` motoko no-repl
-func addBookmark() : async Bool
+func addBookmark({ b : Bookmark; battery : Principal; user : Principal }) : async Bool
 ```
 
 Returns whether bookmark already existed.

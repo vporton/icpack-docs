@@ -2,20 +2,20 @@
 
 ## Function `myCreateCanister`
 ``` motoko no-repl
-func myCreateCanister() : async* { canister_id : Principal }
+func myCreateCanister({ controllers : ?[Principal]; subnet_selection : ?cmc.SubnetSelection; cycles : Nat }) : async* { canister_id : Principal }
 ```
 
 `cyclesAmount` is the total cycles amount, including canister creation fee.
 
 ## Function `myInstallCode`
 ``` motoko no-repl
-func myInstallCode() : async* ()
+func myInstallCode({ installationId : Common.InstallationId; upgradeId : ?Common.UpgradeId; canister_id : Principal; wasmModule : Common.Module; arg : Blob; packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; battery : Principal; user : Principal }) : async* ()
 ```
 
 
 ## Function `copyAssetsIfAny`
 ``` motoko no-repl
-func copyAssetsIfAny() : async* ()
+func copyAssetsIfAny({ wasmModule : Common.Module; canister_id : Principal; simpleIndirect : Principal; user : Principal }) : async* ()
 ```
 
 
@@ -27,12 +27,12 @@ type Callbacks = actor { onCreateCanister : shared ({ installationId : Common.In
 
 ## Function `_installModuleCode`
 ``` motoko no-repl
-func _installModuleCode() : async* Principal
+func _installModuleCode({ moduleNumber : Nat; moduleName : ?Text; installationId : Common.InstallationId; upgradeId : ?Common.UpgradeId; wasmModule : Common.Module; packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; battery : Principal; arg : Blob; user : Principal; controllers : ?[Principal]; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async* Principal
 ```
 
 
 ## Function `_installModuleCodeOnly`
 ``` motoko no-repl
-func _installModuleCodeOnly() : async* Principal
+func _installModuleCodeOnly({ moduleNumber : Nat; moduleName : ?Text; installationId : Common.InstallationId; upgradeId : ?Common.UpgradeId; wasmModule : Common.Module; packageManager : Principal; mainIndirect : Principal; battery : Principal; simpleIndirect : Principal; arg : Blob; user : Principal; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob }; canister_id : Principal }) : async* Principal
 ```
 

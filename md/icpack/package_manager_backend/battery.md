@@ -4,7 +4,7 @@ Battery canister or battery module is a canister that holds cycles and delivers 
 ## Actor Class `Battery`
 
 ``` motoko no-repl
-class Battery()
+class Battery({ packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; user : Principal; installationId : Common.InstallationId; userArg : Blob })
 ```
 
 

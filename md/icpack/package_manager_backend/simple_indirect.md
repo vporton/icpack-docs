@@ -3,13 +3,13 @@
 ## Actor Class `SimpleIndirect`
 
 ``` motoko no-repl
-class SimpleIndirect()
+class SimpleIndirect({ packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; battery : Principal; user : Principal; installationId : Common.InstallationId; userArg : Blob })
 ```
 
 
 ### Function `init`
 ``` motoko no-repl
-func init() : async ()
+func init({  }) : async ()
 ```
 
 

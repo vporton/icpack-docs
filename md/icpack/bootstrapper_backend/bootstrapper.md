@@ -18,7 +18,7 @@ func doBootstrapFrontend(frontendTweakPubKey : PubKey, user : Principal, amountT
 
 ### Function `bootstrapFrontend`
 ``` motoko no-repl
-func bootstrapFrontend() : async { installedModules : [(Text, Principal)]; spentCycles : Int }
+func bootstrapFrontend({ frontendTweakPubKey : PubKey }) : async { installedModules : [(Text, Principal)]; spentCycles : Int }
 ```
 
 We don't allow to substitute user-chosen modules, because it would be a security risk of draining cycles.
@@ -29,7 +29,7 @@ and returned back to the same account.
 
 ### Function `bootstrapBackend`
 ``` motoko no-repl
-func bootstrapBackend() : async { spentCycles : Int }
+func bootstrapBackend({ frontendTweakPrivKey : PrivKey; installedModules : [(Text, Principal)]; user : Principal }) : async { spentCycles : Int }
 ```
 
 Installs the backend after frontend is already installed, tweaks frontend.
@@ -40,7 +40,7 @@ because it would be a security risk of draining cycles.
 
 ### Function `doBootstrapBackend`
 ``` motoko no-repl
-func doBootstrapBackend() : async { battery : Principal }
+func doBootstrapBackend({ pubKey : PubKey; installedModules : [(Text, Principal)]; user : Principal; amountToMove : Nat; tweaker : Data.FrontendTweaker }) : async { battery : Principal }
 ```
 
 

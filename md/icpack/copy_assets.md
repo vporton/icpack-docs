@@ -2,6 +2,6 @@
 
 ## Function `copyAll`
 ``` motoko no-repl
-func copyAll() : async* ()
+func copyAll({ from : Asset.AssetCanister; to : Asset.AssetCanister }) : async* ()
 ```
 

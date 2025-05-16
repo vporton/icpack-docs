@@ -4,13 +4,13 @@ Canister that takes on itself potentially non-returning calls.
 ## Actor Class `MainIndirect`
 
 ``` motoko no-repl
-class MainIndirect()
+class MainIndirect({ packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; battery : Principal; user : Principal; installationId : Common.InstallationId; userArg : Blob })
 ```
 
 
 ### Function `init`
 ``` motoko no-repl
-func init() : async ()
+func init({ installationId : Common.InstallationId }) : async ()
 ```
 
 
@@ -59,7 +59,7 @@ func setOurPM(pm : Principal) : async ()
 
 ### Function `installPackagesWrapper`
 ``` motoko no-repl
-func installPackagesWrapper() : ()
+func installPackagesWrapper({ pmPrincipal : Principal; packages : [{ repo : Common.RepositoryRO; packageName : Common.PackageName; version : Common.Version; preinstalledModules : [(Text, Principal)]; arg : Blob; initArg : ?Blob }]; minInstallationId : Common.InstallationId; user : Principal; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob }; bootstrapping : Bool }) : ()
 ```
 
 Internal.
@@ -67,21 +67,21 @@ Internal.
 
 ### Function `installModule`
 ``` motoko no-repl
-func installModule() : async ()
+func installModule({ installationId : Common.InstallationId; moduleNumber : Nat; moduleName : ?Text; wasmModule : Common.SharedModule; user : Principal; packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; preinstalledCanisterId : ?Principal; arg : Blob; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async ()
 ```
 
 
 
 ### Function `upgradePackageWrapper`
 ``` motoko no-repl
-func upgradePackageWrapper() : ()
+func upgradePackageWrapper({ minUpgradeId : Common.UpgradeId; packages : [{ installationId : Common.InstallationId; packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob }]; user : Principal; afterUpgradeCallback : ?{ canister : Principal; name : Text; data : Blob } }) : ()
 ```
 
 
 
 ### Function `upgradeOrInstallModule`
 ``` motoko no-repl
-func upgradeOrInstallModule() : ()
+func upgradeOrInstallModule({ upgradeId : Common.UpgradeId; installationId : Common.InstallationId; moduleNumber : Nat; moduleName : Text; wasmModule : Common.SharedModule; user : Principal; packageManager : Principal; simpleIndirect : Principal; arg : Blob; canister_id : ?Principal; afterUpgradeCallback : ?{ canister : Principal; name : Text; data : Blob } }) : ()
 ```
 
 

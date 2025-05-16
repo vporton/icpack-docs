@@ -128,7 +128,7 @@ func uploadModule(module_ : Common.ModuleUpload) : async Common.SharedModule
 
 ### Function `setDefaultVersions`
 ``` motoko no-repl
-func setDefaultVersions()
+func setDefaultVersions({ versions : [Common.Version]; defaultVersionIndex : Nat })
 ```
 
 

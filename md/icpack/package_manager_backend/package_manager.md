@@ -4,7 +4,7 @@ TODO@P3: Methods to query for all installed packages.
 ## Actor Class `PackageManager`
 
 ``` motoko no-repl
-class PackageManager()
+class PackageManager({ packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; battery : Principal; user : Principal; installationId : Common.InstallationId; userArg : Blob })
 ```
 
 
@@ -52,7 +52,7 @@ type SharedHalfUpgradedPackageInfo = { installationId : Common.InstallationId; p
 
 ### Function `init`
 ``` motoko no-repl
-func init() : async ()
+func init({  }) : async ()
 ```
 
 
@@ -101,21 +101,21 @@ func setMainIndirect(main_indirect_v : MainIndirect.MainIndirect) : async ()
 
 ### Function `installPackages`
 ``` motoko no-repl
-func installPackages() : async { minInstallationId : Common.InstallationId }
+func installPackages({ packages : [{ packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob }]; user : Principal; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async { minInstallationId : Common.InstallationId }
 ```
 
 
 
 ### Function `uninstallPackages`
 ``` motoko no-repl
-func uninstallPackages() : async { minUninstallationId : Common.UninstallationId }
+func uninstallPackages({ packages : [Common.InstallationId]; user : Principal }) : async { minUninstallationId : Common.UninstallationId }
 ```
 
 
 
 ### Function `upgradePackages`
 ``` motoko no-repl
-func upgradePackages() : async { minUpgradeId : Common.UpgradeId }
+func upgradePackages({ packages : [{ installationId : Common.InstallationId; packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob }]; user : Principal; afterUpgradeCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async { minUpgradeId : Common.UpgradeId }
 ```
 
 We first add new and upgrade existing modules (including executing hooks)
@@ -126,7 +126,7 @@ does not prevent the package to start fully function before this.
 
 ### Function `upgradeStart`
 ``` motoko no-repl
-func upgradeStart() : async ()
+func upgradeStart({ minUpgradeId : Common.UpgradeId; user : Principal; packages : [{ installationId : Common.InstallationId; package : Common.SharedPackageInfo; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob }]; afterUpgradeCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async ()
 ```
 
 Internal.
@@ -134,7 +134,7 @@ Internal.
 
 ### Function `onUpgradeOrInstallModule`
 ``` motoko no-repl
-func onUpgradeOrInstallModule() : async ()
+func onUpgradeOrInstallModule({ upgradeId : Common.UpgradeId; moduleName : Text; canister_id : Principal; afterUpgradeCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async ()
 ```
 
 Internal
@@ -142,7 +142,7 @@ Internal
 
 ### Function `onDeleteCanister`
 ``` motoko no-repl
-func onDeleteCanister() : async ()
+func onDeleteCanister({ uninstallationId : Common.UninstallationId }) : async ()
 ```
 
 Internal
@@ -150,7 +150,7 @@ Internal
 
 ### Function `facilitateBootstrap`
 ``` motoko no-repl
-func facilitateBootstrap() : async { minInstallationId : Common.InstallationId }
+func facilitateBootstrap({ packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob; user : Principal; mainIndirect : Principal; preinstalledModules : [(Text, Principal)] }) : async { minInstallationId : Common.InstallationId }
 ```
 
 Internal used for bootstrapping.
@@ -158,7 +158,7 @@ Internal used for bootstrapping.
 
 ### Function `installStart`
 ``` motoko no-repl
-func installStart()
+func installStart({ minInstallationId : Common.InstallationId; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob }; user : Principal; packages : [{ package : Common.SharedPackageInfo; repo : Common.RepositoryRO; preinstalledModules : [(Text, Principal)]; arg : Blob; initArg : ?Blob }]; bootstrapping : Bool })
 ```
 
 Internal.
@@ -168,7 +168,7 @@ Initialize installation process object.
 
 ### Function `onInstallCode`
 ``` motoko no-repl
-func onInstallCode() : async ()
+func onInstallCode({ installationId : Common.InstallationId; canister : Principal; moduleNumber : Nat; moduleName : ?Text; user : Principal; module_ : Common.SharedModule; packageManager : Principal; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async ()
 ```
 
 Internal
@@ -253,7 +253,7 @@ func setPinned(installationId : Common.InstallationId, pinned : Bool) : async ()
 
 ### Function `removeStalled`
 ``` motoko no-repl
-func removeStalled() : async ()
+func removeStalled({ install : [Common.InstallationId]; uninstall : [Common.UninstallationId]; upgrade : [Common.UpgradeId] }) : async ()
 ```
 
 
