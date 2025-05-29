@@ -114,9 +114,16 @@ func withdrawCycles4(amount : Nat) : async ()
 
 
 
-### Function `convertCycles`
+### Function `topUpCycles`
 ``` motoko no-repl
-func convertCycles()
+func topUpCycles()
+```
+
+
+
+### Function `topUpWithICP`
+``` motoko no-repl
+func topUpWithICP() : async { balance : Nat }
 ```
 
 

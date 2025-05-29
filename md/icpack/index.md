@@ -12,3 +12,4 @@
 * [package_manager_backend/package_manager](package_manager_backend/package_manager.md) TODO@P3: Methods to query for all installed packages.
 * [package_manager_backend/simple_indirect](package_manager_backend/simple_indirect.md) 
 * [repository_backend/Repository](repository_backend/Repository.md) 
+* [wallet_backend/wallet](wallet_backend/wallet.md) 

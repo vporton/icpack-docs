@@ -289,3 +289,15 @@ func principalToSubaccount(principal : Principal) : Blob
 let cycles_transfer_fee
 ```
 
+
+## Value `icp_transfer_fee`
+``` motoko no-repl
+let icp_transfer_fee
+```
+
+
+## Value `minimalFunding`
+``` motoko no-repl
+let minimalFunding
+```
+

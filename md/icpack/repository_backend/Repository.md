@@ -168,3 +168,10 @@ TODO@P3: Don't call it directly.
 func getPackage(name : Common.PackageName, version : Common.Version) : async Common.SharedPackageInfo
 ```
 
+
+
+### Function `cleanUnusedWasms`
+``` motoko no-repl
+func cleanUnusedWasms()
+```
+

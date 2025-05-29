@@ -67,7 +67,7 @@ Internal.
 
 ### Function `installModule`
 ``` motoko no-repl
-func installModule({ installationId : Common.InstallationId; moduleNumber : Nat; moduleName : ?Text; wasmModule : Common.SharedModule; user : Principal; packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; preinstalledCanisterId : ?Principal; arg : Blob; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : async ()
+func installModule({ installationId : Common.InstallationId; moduleNumber : Nat; moduleName : ?Text; wasmModule : Common.SharedModule; user : Principal; packageManager : Principal; mainIndirect : Principal; simpleIndirect : Principal; preinstalledCanisterId : ?Principal; arg : Blob; afterInstallCallback : ?{ canister : Principal; name : Text; data : Blob } }) : ()
 ```
 
 

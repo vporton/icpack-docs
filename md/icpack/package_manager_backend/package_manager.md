@@ -313,3 +313,36 @@ func setDefaultInstalledPackage(name : Common.PackageName, guid : Blob, installa
 func withdrawCycles(amount : Nat, payee : Principal) : async ()
 ```
 
+
+
+### Function `startModularUpgrade`
+``` motoko no-repl
+func startModularUpgrade({ installationId : Common.InstallationId; packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob; user : Principal }) : async { upgradeId : Common.UpgradeId; totalModules : Nat; modulesToUpgrade : [Text]; modulesToDelete : [(Text, Principal)] }
+```
+
+New API for step-by-step upgrades
+Initiates an upgrade process and returns upgrade information
+
+
+### Function `upgradeModule`
+``` motoko no-repl
+func upgradeModule({ upgradeId : Common.UpgradeId; moduleName : Text; user : Principal }) : async { completed : Bool }
+```
+
+Upgrade a specific module as part of modular upgrade
+
+
+### Function `getModularUpgradeStatus`
+``` motoko no-repl
+func getModularUpgradeStatus(upgradeId : Common.UpgradeId) : async { upgradeId : Common.UpgradeId; installationId : Common.InstallationId; packageName : Text; completedModules : Nat; totalModules : Nat; remainingModules : Nat; isCompleted : Bool }
+```
+
+Get the current status of a modular upgrade
+
+
+### Function `completeModularUpgrade`
+``` motoko no-repl
+func completeModularUpgrade(upgradeId : Common.UpgradeId) : async ()
+```
+
+Mark all modules as upgraded for a modular upgrade (used for frontend-driven upgrades)

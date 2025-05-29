@@ -15,7 +15,7 @@ func myInstallCode({ installationId : Common.InstallationId; upgradeId : ?Common
 
 ## Function `copyAssetsIfAny`
 ``` motoko no-repl
-func copyAssetsIfAny({ wasmModule : Common.Module; canister_id : Principal; simpleIndirect : Principal; user : Principal }) : async* ()
+func copyAssetsIfAny({ wasmModule : Common.Module; canister_id : Principal; simpleIndirect : Principal; mainIndirect : Principal; user : Principal }) : async* ()
 ```
 
 
