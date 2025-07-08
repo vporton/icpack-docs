@@ -9,6 +9,13 @@ class Bootstrapper()
 ```
 
 
+### Type `PubKey`
+``` motoko no-repl
+type PubKey = Blob
+```
+
+
+
 ### Function `doBootstrapFrontend`
 ``` motoko no-repl
 func doBootstrapFrontend(frontendTweakPubKey : PubKey, user : Principal, amountToMove : Nat) : async { installedModules : [(Text, Principal)] }
@@ -29,7 +36,7 @@ and returned back to the same account.
 
 ### Function `bootstrapBackend`
 ``` motoko no-repl
-func bootstrapBackend({ frontendTweakPrivKey : PrivKey; installedModules : [(Text, Principal)]; user : Principal }) : async { spentCycles : Int }
+func bootstrapBackend({ frontendTweakPubKey : PubKey; installedModules : [(Text, Principal)]; user : Principal; signature : Blob; additionalPackages : [{ packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO }] }) : async { spentCycles : Int }
 ```
 
 Installs the backend after frontend is already installed, tweaks frontend.
@@ -40,21 +47,7 @@ because it would be a security risk of draining cycles.
 
 ### Function `doBootstrapBackend`
 ``` motoko no-repl
-func doBootstrapBackend({ pubKey : PubKey; installedModules : [(Text, Principal)]; user : Principal; amountToMove : Nat; tweaker : Data.FrontendTweaker }) : async { battery : Principal }
-```
-
-
-
-### Type `PubKey`
-``` motoko no-repl
-type PubKey = Blob
-```
-
-
-
-### Type `PrivKey`
-``` motoko no-repl
-type PrivKey = Blob
+func doBootstrapBackend({ pubKey : PubKey; installedModules : [(Text, Principal)]; user : Principal; amountToMove : Nat; tweaker : Data.FrontendTweaker; additionalPackages : [{ packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO }] }) : async { battery : Principal }
 ```
 
 

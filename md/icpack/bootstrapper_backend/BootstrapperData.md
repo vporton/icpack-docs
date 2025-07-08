@@ -9,14 +9,7 @@ class BootstrapperData(initialOwner : Principal)
 
 ### Type `PubKey`
 ``` motoko no-repl
-type PubKey = Blob
-```
-
-
-
-### Function `changeOwner`
-``` motoko no-repl
-func changeOwner(newOwner : Principal)
+type PubKey = UserAuth.PubKey
 ```
 
 
@@ -24,6 +17,20 @@ func changeOwner(newOwner : Principal)
 ### Type `FrontendTweaker`
 ``` motoko no-repl
 type FrontendTweaker = { frontend : Principal; user : Principal }
+```
+
+
+
+### Type `Token`
+``` motoko no-repl
+type Token = {#icp; #cycles}
+```
+
+
+
+### Function `changeOwner`
+``` motoko no-repl
+func changeOwner(newOwner : Principal)
 ```
 
 
@@ -37,7 +44,7 @@ func setOwner(newOwner : Principal)
 
 ### Function `putFrontendTweaker`
 ``` motoko no-repl
-func putFrontendTweaker(pubKey : Blob, tweaker : FrontendTweaker) : async ()
+func putFrontendTweaker(pubKey : PubKey, tweaker : FrontendTweaker) : async ()
 ```
 
 

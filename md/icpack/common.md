@@ -201,7 +201,7 @@ type RepositoryRO = actor { getRepositoryName : shared query () -> async Text; g
 
 ## Type `InstalledPackageInfo`
 ``` motoko no-repl
-type InstalledPackageInfo = { id : InstallationId; var package : PackageInfo; var packageRepoCanister : Principal; var modulesInstalledByDefault : HashMap.HashMap<Text, Principal>; additionalModules : HashMap.HashMap<Text, Buffer.Buffer<Principal>>; var pinned : Bool }
+type InstalledPackageInfo = { id : InstallationId; var package : PackageInfo; var packageRepoCanister : Principal; var modulesInstalledByDefault : HashMap.HashMap<Text, Principal>; additionalModules : HashMap.HashMap<Text, Buffer.Buffer<Principal>>; var pubKey : ?Blob; var pinned : Bool }
 ```
 
 
@@ -220,7 +220,7 @@ func numberOfModules(pkg : InstalledPackageInfo) : Nat
 
 ## Type `SharedInstalledPackageInfo`
 ``` motoko no-repl
-type SharedInstalledPackageInfo = { id : InstallationId; package : SharedPackageInfo; packageRepoCanister : Principal; modulesInstalledByDefault : [(Text, Principal)]; additionalModules : [(Text, [Principal])]; pinned : Bool }
+type SharedInstalledPackageInfo = { id : InstallationId; package : SharedPackageInfo; packageRepoCanister : Principal; modulesInstalledByDefault : [(Text, Principal)]; additionalModules : [(Text, [Principal])]; pubKey : ?Blob; pinned : Bool }
 ```
 
 

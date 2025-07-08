@@ -212,6 +212,22 @@ func getAllInstalledPackages() : async [(Common.InstallationId, Common.SharedIns
 
 
 
+### Function `getInstallationPubKey`
+``` motoko no-repl
+func getInstallationPubKey(id : Common.InstallationId) : async ?Blob
+```
+
+Get public key associated with an installation.
+
+
+### Function `setInstallationPubKey`
+``` motoko no-repl
+func setInstallationPubKey(id : Common.InstallationId, pubKey : Blob) : async ()
+```
+
+Update public key for an installation.
+
+
 ### Function `getHalfInstalledPackages`
 ``` motoko no-repl
 func getHalfInstalledPackages() : async [{ installationId : Common.InstallationId; package : Common.SharedPackageInfo }]
@@ -315,9 +331,18 @@ func withdrawCycles(amount : Nat, payee : Principal) : async ()
 
 
 
+### Function `copyAssetsIfAny`
+``` motoko no-repl
+func copyAssetsIfAny({ wasmModule : Common.SharedModule; canister_id : Principal; simpleIndirect : Principal; mainIndirect : Principal; user : Principal }) : async ()
+```
+
+Copy assets from one canister to another if the module contains assets
+wrapper around Install.copyAssetsIfAny from install.mo
+
+
 ### Function `startModularUpgrade`
 ``` motoko no-repl
-func startModularUpgrade({ installationId : Common.InstallationId; packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob; user : Principal }) : async { upgradeId : Common.UpgradeId; totalModules : Nat; modulesToUpgrade : [Text]; modulesToDelete : [(Text, Principal)] }
+func startModularUpgrade({ installationId : Common.InstallationId; packageName : Common.PackageName; version : Common.Version; repo : Common.RepositoryRO; arg : Blob; initArg : ?Blob; user : Principal }) : async { upgradeId : Common.UpgradeId; totalModules : Nat; modulesToUpgradeOrInstall : [Text]; modulesToDelete : [(Text, Principal)] }
 ```
 
 New API for step-by-step upgrades
@@ -342,7 +367,7 @@ Get the current status of a modular upgrade
 
 ### Function `completeModularUpgrade`
 ``` motoko no-repl
-func completeModularUpgrade(upgradeId : Common.UpgradeId) : async ()
+func completeModularUpgrade(upgradeId : Common.UpgradeId, modules : [(Text, Principal)]) : async ()
 ```
 
 Mark all modules as upgraded for a modular upgrade (used for frontend-driven upgrades)
