@@ -99,19 +99,19 @@ func withdrawCycles(amount : Nat, payee : Principal) : async ()
 
 
 
+### Function `depositCycles`
+``` motoko no-repl
+func depositCycles(amount : Nat, payee : CyclesLedger.Account) : async ()
+```
+
+
+
 ### Function `withdrawCycles3`
 ``` motoko no-repl
 func withdrawCycles3(amount : Nat, payee : Principal) : async ()
 ```
 
 TODO@P3: Unused function.
-
-
-### Function `withdrawCycles4`
-``` motoko no-repl
-func withdrawCycles4(amount : Nat) : async ()
-```
-
 
 
 ### Function `topUpCycles`

@@ -26,7 +26,7 @@ type VersionRange = (Version, Version)
 
 ## Type `CommonPackageInfo`
 ``` motoko no-repl
-type CommonPackageInfo = { guid : Blob; name : PackageName; version : Version; shortDescription : Text; longDescription : Text }
+type CommonPackageInfo = { guid : Blob; name : PackageName; version : Version; price : Nat; shortDescription : Text; longDescription : Text; developer : ?CyclesLedger.Account }
 ```
 
 Common properties of package and virtual package.
